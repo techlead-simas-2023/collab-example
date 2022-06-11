@@ -1,0 +1,63 @@
+package com.sekoding.example.repository;
+
+import com.sekoding.example.exception.DataNotFoundException;
+import com.sekoding.example.model.Group;
+import com.sekoding.example.model.Participant;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// Notes: 1st class to implement in TDD process
+public class CsvParticipantRepository implements ParticipantRepository {
+
+    private Map<String, List<Participant>> groups;
+
+    public CsvParticipantRepository(Path csvPath) throws IOException {
+        this.groups = createGroups(csvPath);
+    }
+
+    @Override
+    public Participant getParticipant(String name) throws DataNotFoundException {
+        for (List<Participant> groupMembers : groups.values()) {
+            for (Participant participant : groupMembers) {
+                if (participant.getName().equalsIgnoreCase(name)) {
+                    return participant;
+                }
+            }
+        }
+
+        throw new DataNotFoundException(String.format("Participant '%s' does not exist", name));
+    }
+
+    @Override
+    public Group getGroup(String name) throws DataNotFoundException {
+        if (!groups.containsKey(name)) {
+            throw new DataNotFoundException(String.format("Group '%s' does not exist", name));
+        }
+
+        return new Group(name, groups.get(name));
+    }
+
+    private static Map<String, List<Participant>> createGroups(Path csvPath) throws IOException {
+        List<String> lines = Files.readAllLines(csvPath);
+        Map<String, List<Participant>> groups = new HashMap<>();
+
+        for (String line : lines) {
+            String[] values = line.split(",");
+            String name = values[0];
+            String group = values[1];
+
+            List<Participant> members = groups.getOrDefault(group, new ArrayList<>());
+            members.add(new Participant(name));
+
+            groups.putIfAbsent(group, members);
+        }
+
+        return groups;
+    }
+}
