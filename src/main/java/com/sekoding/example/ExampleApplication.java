@@ -33,6 +33,10 @@ public class ExampleApplication {
             toCsv = Path.of(csvPath);
         }
 
+        if (csvPath.equals("demo")) {
+            return new CsvParticipantRepository();
+        }
+
         return new CsvParticipantRepository(toCsv);
     }
 }
