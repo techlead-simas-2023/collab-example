@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 // Notes: 1st class to implement in TDD process
 public class CsvParticipantRepository implements ParticipantRepository {
@@ -44,11 +45,14 @@ public class CsvParticipantRepository implements ParticipantRepository {
     }
 
     private static Map<String, List<Participant>> createGroups(Path csvPath) throws IOException {
-        List<String> lines = Files.readAllLines(csvPath);
+        List<String> nonEmptyLines = Files.readAllLines(csvPath).stream()
+            .filter(line -> line.length() != 0)
+            .collect(Collectors.toList());
         Map<String, List<Participant>> groups = new HashMap<>();
 
-        for (String line : lines) {
+        for (String line : nonEmptyLines) {
             String[] values = line.split(",");
+
             String name = values[0];
             String group = values[1];
 
