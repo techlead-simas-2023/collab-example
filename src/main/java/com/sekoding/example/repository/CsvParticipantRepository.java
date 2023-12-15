@@ -62,8 +62,8 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static List<Participant> createKelompokContoh() {
         List<Participant> participants = new ArrayList<>();
 
-        participants.add(new Participant("Upin"));
-        participants.add(new Participant("Ipin"));
+        participants.add(new Participant("Upin", "Belajar"));
+        participants.add(new Participant("Ipin", "Bermain"));
 
         return participants;
     }
@@ -113,6 +113,8 @@ public class CsvParticipantRepository implements ParticipantRepository {
 
             String name = values[0];
             String group = values[1];
+
+            // TODO: Parse third column as the value for hobby attribute
 
             List<Participant> members = groups.getOrDefault(group, new ArrayList<>());
             members.add(new Participant(name));
