@@ -40,29 +40,4 @@ jobs:
           java-version: "17"
           cache: "maven"
       - name: Run unit tests
-        run: mvn $MAVEN_CLI_OPTS test -Dgroups=unit -Djacoco.destFile=target/jacoco-unit.exec
-      - name: Merge code coverage reports
-        run: |
-          mvn -DskipTests verify surefire-report:report
-      - name: Run SonarScanner
-        run: |
-          echo "TODO Create SONAR_TOKEN secret on GitHub Actions"
-          echo "TODO Update sonar.organization and sonar.projectKey properties on pom.xml with your own values"
-          mvn -B verify -DskipTests org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - name: Organise test reports
-        run: |
-          mkdir -p target/site/surefire
-          mv target/site/css target/site/surefire/css
-          mv target/site/images target/site/surefire/images
-          mv target/site/surefire-report.html target/site/surefire/surefire-report.html
-      - name: Save test reports as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: surefire-jacoco-reports
-          path: |
-            target/site/surefire/
-            target/site/jacoco/
-          retention-days: 1
+        run: mvn test
