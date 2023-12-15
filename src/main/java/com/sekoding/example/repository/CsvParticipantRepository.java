@@ -62,8 +62,8 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static List<Participant> createKelompokContoh() {
         List<Participant> participants = new ArrayList<>();
 
-        participants.add(new Participant("Upin"));
-        participants.add(new Participant("Ipin"));
+        participants.add(new Participant("Upin", "Belajar"));
+        participants.add(new Participant("Ipin", "Bermain"));
 
         return participants;
     }
