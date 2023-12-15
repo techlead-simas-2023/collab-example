@@ -79,7 +79,9 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static List<Participant> createKelompok2() {
         List<Participant> participants = new ArrayList<>();
 
-        participants.add(new Participant("TODO: Tambahkan nama-nama anggota kelompok 2!"));
+        participants.add(new Participant("Ariawan"));
+        participants.add(new Participant("Dini"));
+        participants.add(new Participant("Fadly"));
 
         return participants;
     }
