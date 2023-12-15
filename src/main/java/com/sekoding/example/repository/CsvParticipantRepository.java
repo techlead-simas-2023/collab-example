@@ -71,7 +71,7 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static List<Participant> createKelompok1() {
         List<Participant> participants = new ArrayList<>();
 
-        participants.add(new Participant("TODO: Tambahkan nama-nama anggota kelompok 1!"));
+        participants.add(new Participant("Daya Adianto"));
 
         return participants;
     }
@@ -79,7 +79,8 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static List<Participant> createKelompok2() {
         List<Participant> participants = new ArrayList<>();
 
-        participants.add(new Participant("TODO: Tambahkan nama-nama anggota kelompok 2!"));
+        participants.add(new Participant("Kucing Garong"));
+        participants.add(new Participant("Guk Guk"));
 
         return participants;
     }
@@ -87,7 +88,9 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static List<Participant> createKelompok3() {
         List<Participant> participants = new ArrayList<>();
 
-        participants.add(new Participant("TODO: Tambahkan nama-nama anggota kelompok 3!"));
+        participants.add(new Participant("David"));
+        participants.add(new Participant("Messi"));
+        participants.add(new Participant("Salah"));
 
         return participants;
     }
