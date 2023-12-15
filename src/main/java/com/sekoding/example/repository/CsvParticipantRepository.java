@@ -51,24 +51,27 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static Map<String, List<Participant>> createSampleGroups() {
         Map<String, List<Participant>> groups = new HashMap<>();
 
-        groups.put("Kelompok 1", createKelompok1());
-        groups.put("Kelompok 2", createKelompok2());
-        groups.put("Kelompok 3", createKelompok3());
-        groups.put("Kelompok 4", createKelompok4());
+        groups.put("Contoh", createKelompokContoh());
+        groups.put("K1", createKelompok1());
+        groups.put("K2", createKelompok2());
+        groups.put("K3", createKelompok3());
 
         return groups;
+    }
+
+    private static List<Participant> createKelompokContoh() {
+        List<Participant> participants = new ArrayList<>();
+
+        participants.add(new Participant("Upin"));
+        participants.add(new Participant("Ipin"));
+
+        return participants;
     }
 
     private static List<Participant> createKelompok1() {
         List<Participant> participants = new ArrayList<>();
 
-        // TODO: Add Kelompok 1 group members
-        participants.add(new Participant("Richman Tumpal Micael Pakpahan"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
+        participants.add(new Participant("TODO: Tambahkan nama-nama anggota kelompok 1!"));
 
         return participants;
     }
@@ -76,12 +79,7 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static List<Participant> createKelompok2() {
         List<Participant> participants = new ArrayList<>();
 
-        // TODO: Add Kelompok 2 group members
-        participants.add(new Participant("Taufik Akbar Dufi"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
+        participants.add(new Participant("TODO: Tambahkan nama-nama anggota kelompok 2!"));
 
         return participants;
     }
@@ -89,26 +87,7 @@ public class CsvParticipantRepository implements ParticipantRepository {
     private static List<Participant> createKelompok3() {
         List<Participant> participants = new ArrayList<>();
 
-        // TODO: Complete Kelompok 3 group members
-        participants.add(new Participant("Febry Widyatna"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-
-        return participants;
-    }
-
-    private static List<Participant> createKelompok4() {
-        List<Participant> participants = new ArrayList<>();
-
-        // TODO: Complete Kelompok 4 group members
-        participants.add(new Participant("Asni Valentina"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
-        participants.add(new Participant("TODO"));
+        participants.add(new Participant("TODO: Tambahkan nama-nama anggota kelompok 3!"));
 
         return participants;
     }
