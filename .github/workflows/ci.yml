@@ -11,4 +11,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "TODO Complete me!"
+      - name: Checkout the repository"
+        uses: actions/checkout@v3
+        with: 
+          fetch-depth: 0
+      - name: Setup java
+        uses: set up java@v3
+        with: 
+          distribution: "temurin"
+          java-version: "17"
+          cache: "maven"
+      - name: Run the test
+        uses : mvn test
+      - name: Run SonarScanner
+        uses: SonarSource/sonarscanner-github-action2master
