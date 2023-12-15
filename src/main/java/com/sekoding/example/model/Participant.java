@@ -5,13 +5,24 @@ import java.util.Objects;
 public class Participant {
 
     private String name;
+    private String hobby;
+
+
+    public Participant(String name, String hobby) {
+        this.name = name;
+        this.hobby = hobby;
+    }
 
     public Participant(String name) {
-        this.name = name;
+        this(name, "No hobby");
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getHobby() {
+        return hobby;
     }
 
     @Override
