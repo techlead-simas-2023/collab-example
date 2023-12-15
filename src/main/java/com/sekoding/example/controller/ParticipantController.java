@@ -37,7 +37,7 @@ public class ParticipantController {
         return "group";
     }
 
-    @RequestMapping("/participant/{name}")
+    @GetMapping("/participant/{name}")
     public String getParticipantPage(@PathVariable String name, Model model) throws DataNotFoundException {
         LOG.debug("Input participant name: {}", name);
 
